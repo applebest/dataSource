@@ -15,6 +15,8 @@
 		2F6DE44820EF41B7000A8EE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE44720EF41B7000A8EE9 /* main.m */; };
 		2F6DE45220EF41B7000A8EE9 /* tableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE45120EF41B7000A8EE9 /* tableViewTests.m */; };
 		2F6DE45D20EF41B7000A8EE9 /* tableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE45C20EF41B7000A8EE9 /* tableViewUITests.m */; };
+		2F6DE46D20EF454A000A8EE9 /* TableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE46C20EF454A000A8EE9 /* TableDataSource.m */; };
+		2F6DE47120EF5AA1000A8EE9 /* CollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DE47020EF5AA1000A8EE9 /* CollectionDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		2F6DE45820EF41B7000A8EE9 /* tableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6DE45C20EF41B7000A8EE9 /* tableViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tableViewUITests.m; sourceTree = "<group>"; };
 		2F6DE45E20EF41B7000A8EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F6DE46B20EF454A000A8EE9 /* TableDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableDataSource.h; sourceTree = "<group>"; };
+		2F6DE46C20EF454A000A8EE9 /* TableDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDataSource.m; sourceTree = "<group>"; };
+		2F6DE46F20EF5AA1000A8EE9 /* CollectionDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionDataSource.h; sourceTree = "<group>"; };
+		2F6DE47020EF5AA1000A8EE9 /* CollectionDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,8 @@
 		2F6DE43720EF41B5000A8EE9 /* tableView */ = {
 			isa = PBXGroup;
 			children = (
+				2F6DE46E20EF5A8F000A8EE9 /* CollectionDataSource */,
+				2F6DE46A20EF453A000A8EE9 /* TableDataSource */,
 				2F6DE43820EF41B5000A8EE9 /* AppDelegate.h */,
 				2F6DE43920EF41B5000A8EE9 /* AppDelegate.m */,
 				2F6DE43B20EF41B5000A8EE9 /* ViewController.h */,
@@ -130,6 +138,24 @@
 				2F6DE45E20EF41B7000A8EE9 /* Info.plist */,
 			);
 			path = tableViewUITests;
+			sourceTree = "<group>";
+		};
+		2F6DE46A20EF453A000A8EE9 /* TableDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2F6DE46B20EF454A000A8EE9 /* TableDataSource.h */,
+				2F6DE46C20EF454A000A8EE9 /* TableDataSource.m */,
+			);
+			path = TableDataSource;
+			sourceTree = "<group>";
+		};
+		2F6DE46E20EF5A8F000A8EE9 /* CollectionDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				2F6DE46F20EF5AA1000A8EE9 /* CollectionDataSource.h */,
+				2F6DE47020EF5AA1000A8EE9 /* CollectionDataSource.m */,
+			);
+			path = CollectionDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F6DE43D20EF41B5000A8EE9 /* ViewController.m in Sources */,
+				2F6DE47120EF5AA1000A8EE9 /* CollectionDataSource.m in Sources */,
 				2F6DE44820EF41B7000A8EE9 /* main.m in Sources */,
 				2F6DE43A20EF41B5000A8EE9 /* AppDelegate.m in Sources */,
+				2F6DE46D20EF454A000A8EE9 /* TableDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
