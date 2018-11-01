@@ -15,10 +15,11 @@ typedef NSInteger(^numberOfRowsInSectionBlock)(NSInteger section);
 
 typedef void(^configureTableCellBlock)(UITableViewCell *cell,NSIndexPath *indexPath);
 
+typedef NSString*(^identifierBlock)(NSIndexPath *indexPath);
 
 @interface TableDataSource : NSObject<UITableViewDataSource>
 
 
-- (void)cellIdentifier:(NSString *)identifier numberSection:(numberSectionBlock)numbersection numberOfRows:(numberOfRowsInSectionBlock) numberOfRows configureCell:(configureTableCellBlock)configureCell;
+- (void)cellIdentifier:(identifierBlock)identifier numberSection:(numberSectionBlock)numbersection numberOfRows:(numberOfRowsInSectionBlock) numberOfRows configureCell:(configureTableCellBlock)configureCell;
 
 @end

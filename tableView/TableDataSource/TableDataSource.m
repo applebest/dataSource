@@ -17,7 +17,7 @@
 
 @property (nonatomic,copy) configureTableCellBlock configureCell;
 
-@property (nonatomic,copy) NSString *identifier;
+@property (nonatomic,copy) identifierBlock identifier;
 
 @end
 
@@ -25,7 +25,12 @@
 @implementation TableDataSource
 
 
-- (void)cellIdentifier:(NSString *)identifier numberSection:(numberSectionBlock)numbersection numberOfRows:(numberOfRowsInSectionBlock) numberOfRows configureCell:(configureTableCellBlock)configureCell{
+- (void)cellIdentifier:(identifierBlock)identifier numberSection:(numberSectionBlock)numbersection numberOfRows:(numberOfRowsInSectionBlock) numberOfRows configureCell:(configureTableCellBlock)configureCell{
+    
+    NSAssert(identifier     != nil, @"identifier is nil");
+    NSAssert(numbersection  != nil, @"numbersection is nil");
+    NSAssert(numberOfRows   != nil, @"numberOfRows is nil");
+    NSAssert(configureCell  != nil, @"configureCell is nil");
     
     self.identifier = identifier;
     self.numbersection = numbersection;
@@ -34,7 +39,7 @@
     
 }
 
-
+#pragma mark ————— TableViewDataSource代理 —————
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return !self.numbersection ? 1 : self.numbersection();
@@ -48,10 +53,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier(indexPath) forIndexPath:indexPath];
     self.configureCell(cell, indexPath);
     return cell;
 }
 
+#pragma mark ————— dealloc —————
+- (void)dealloc{
+    self.numbersection = nil;
+    self.numberOfRows = nil;
+    self.configureCell = nil;
+    self.identifier = nil;
+}
 
 @end

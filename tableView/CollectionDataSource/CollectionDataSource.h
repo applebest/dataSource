@@ -15,9 +15,12 @@ typedef NSInteger(^numberOfItemsInSectionBlock)(NSInteger section);
 
 typedef void(^configureCollectionCellBlock)(UICollectionViewCell *cell,NSIndexPath *indexPath);
 
+typedef NSString*(^identifierBlock)(NSIndexPath *indexPath);
+
+
 @interface CollectionDataSource : NSObject<UICollectionViewDataSource>
 
-- (void)cellIdentifier:(NSString *)identifier numberSection:(numberSectionBlock)numbersection numberOfItems:(numberOfItemsInSectionBlock) numberOfItems configureCell:(configureCollectionCellBlock)configureCell;
+- (void)cellIdentifier:(identifierBlock)identifier numberSection:(numberSectionBlock)numbersection numberOfItems:(numberOfItemsInSectionBlock) numberOfItems configureCell:(configureCollectionCellBlock)configureCell;
 
 
 

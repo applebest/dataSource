@@ -16,18 +16,20 @@
 
 @property (nonatomic,copy) configureCollectionCellBlock configureCell;
 
-@property (nonatomic,copy) NSString *identifier;
+@property (nonatomic,copy) identifierBlock identifier;
 
 
 @end
 
 @implementation CollectionDataSource
 
-- (void)cellIdentifier:(NSString *)identifier numberSection:(numberSectionBlock)numbersection numberOfItems:(numberOfItemsInSectionBlock) numberOfItems configureCell:(configureCollectionCellBlock)configureCell{
-    NSAssert(identifier.length > 0, @"identifier is nil");
-    NSAssert(numberOfItems != nil , @"numberOfItemsInSectionBlock is nil");
-    NSAssert(configureCell != nil , @"configureCellBlock is nil");
-
+- (void)cellIdentifier:(identifierBlock)identifier numberSection:(numberSectionBlock)numbersection numberOfItems:(numberOfItemsInSectionBlock) numberOfItems configureCell:(configureCollectionCellBlock)configureCell{
+    
+    NSAssert(identifier      != nil, @"identifier is nil");
+    NSAssert(numbersection   != nil, @"numbersection is nil");
+    NSAssert(numberOfItems   != nil, @"numberOfRows is nil");
+    NSAssert(configureCell   != nil, @"configureCell is nil");
+    
     self.identifier = identifier;
     self.numbersection = numbersection;
     self.numberOfItems = numberOfItems;
@@ -35,7 +37,7 @@
     
 }
 
-
+#pragma mark ————— UICollectionViewDataSource代理 —————
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return !self.numbersection ? 1 : self.numbersection();
 }
@@ -51,10 +53,18 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier(indexPath) forIndexPath:indexPath];
     self.configureCell(cell, indexPath);
     return cell;
     
+}
+
+#pragma mark ————— dealloc —————
+- (void)dealloc{
+    self.numbersection = nil;
+    self.numberOfItems = nil;
+    self.configureCell = nil;
+    self.identifier = nil;
 }
 
 @end

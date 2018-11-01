@@ -89,14 +89,12 @@
 #ifdef COLLECTION_DEF
     
     self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    [self.collectionDataSource cellIdentifier:@"Identifier" numberSection:^NSInteger{
-        
+    [self.collectionDataSource cellIdentifier:^NSString *(NSIndexPath *indexPath) {
+        return @"Identifier";
+    } numberSection:^NSInteger{
         return 5;
-        
     } numberOfItems:^NSInteger(NSInteger section) {
-        
         return 10;
-        
     } configureCell:^(UICollectionViewCell *cell, NSIndexPath *indexPath) {
         cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1];
     }];
@@ -109,7 +107,9 @@
   
     self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     
-    [self.dataSource cellIdentifier:@"Identifier" numberSection:nil numberOfRows:^NSInteger(NSInteger section) {
+    [self.dataSource cellIdentifier:^NSString *(NSIndexPath *indexPath) {
+        return @"Identifier";
+    } numberSection:nil numberOfRows:^NSInteger(NSInteger section) {
        
         return 5;
     } configureCell:^(UITableViewCell *cell, NSIndexPath *indexPath) {
